@@ -86,3 +86,12 @@ label{
 #Language{
     margin-right: 1vw;
 }
+
+#editor {
+    /* height:  */
+    height: 100vh;
+}
+
+.CodeMirror {
+    height: 100%;
+}
