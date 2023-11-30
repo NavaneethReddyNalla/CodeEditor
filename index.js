@@ -1,11 +1,10 @@
-// let textValue = "print('Hello world')";
-
-let textValue = "function myScript() {\n\treturn 100;\n}\n";
+let textValue =
+  'class Hello {\n\tpublic static void main(String[] args) {\n\t\tSystem.out.println("Hello World");\n\t}\n}';
 let editorDiv = document.querySelector("#editor");
 
 let myCodeMirror = CodeMirror(editorDiv, {
   value: textValue,
-  mode: "javascript",
+  mode: "text/x-java",
   lineNumbers: true,
   indentWithTabs: true,
   indentUnit: 4,
