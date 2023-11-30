@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header{
+    width: 100% ;
+    background-color: #2e4c5c;
+    height: 9vh;
+}
+
+.editor-header{
+    background-color: #95bb9d;
+    display: flex;
+    justify-content: space-between;
+    /* height: 60px; */
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.code-editor-area, .console-area {
+    border: 1px solid black;
+    flex-basis: 0;
+    flex-grow: 1;
+}
+
+button{   
+    padding-left:15px;
+    padding-right:15px;
+    margin-right: 0.5vw;
+    height: 30px;
+    font-size: 1rem;
+    
+}
+
+button:hover{
+    background-color: #006adc;
+    color: whitesmoke;
+}
+.code-editor-area {
+    min-height: 90vh;
+}
+
+textarea {
+    background-color: black;
+    color: white;
+}
+
+::placeholder {
+    color: white;
+    opacity: 1; /* Firefox */
+    padding-left: 8px;
+    padding-top: 5px;
+
+  }
+
+.editor-header {
+    padding: 15px; 
+}
+
+.input-area {
+    background-color: #558776;
+}
+
+#input-box {
+    width: 50vw;
+    max-height: 40vh;
+}
+
+.output-area {
+    background-color: #558776;
+    color:white;
+}
+
+label{
+    font-size: 1.2rem;
+}
+
+#Language{
+    margin-right: 1vw;
+}

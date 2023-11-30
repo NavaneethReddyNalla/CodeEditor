@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java CBP</title>
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./node_modules/codemirror/lib/codemirror.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body class="bg-dark bg-gradient">
+    <!-- nav bar -->
+    <header class="text-center text-white p-1">
+        <h1>Code Editor</h1>
+    </header>
+
+    <main>
+        <!-- Left side part -->        
+        <div class="code-editor-area">
+            <div class=" w-100 p-1 editor-header">
+                <div>
+                    
+                        <label for="Language">Language:</label>
+                        <select name="Language" id="Language" class="drop-down" default="java">
+                            <option value="java">Java</option>
+                        </select>
+                    
+                        <label for="Theme">Theme:</label>
+                        <select name="Theme" id="Theme" class="drop-down" default="dark">
+                            <option value="dark">Dark</option>
+                            <option value="light">Light</option>
+                            <option value="blue">Blue</option>
+                        </select>
+                    
+                </div>
+                <button>Run</button>
+            </div>
+            <div id="editor" class="bg-dark bg-gradient"></div>
+            <!-- <textarea name="editor" id="editor" cols="30" rows="10"></textarea> -->
+        </div>
+        <!-- Left side part part ends -->
+    
+        <!-- Right side part starts -->
+        <div class="console-area">
+            <div class="input-area">
+                <div class="input-header">
+                    <h4 class="text-white">Input</h4>
+                </div>
+                <textarea name="input" id="input-box" cols="70" rows="70" placeholder="//Enter the input if needed"></textarea>
+            </div>
+    
+            <div class="output-area">
+                <h4>Output</h4>
+            </div>
+        </div>
+    </main>
+    <!-- <script type="module" src="index.js"></script> -->
+</body>
+</html>   
