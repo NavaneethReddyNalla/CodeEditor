@@ -92,6 +92,12 @@ label{
     height: 100vh;
 }
 
-/* .CodeMirror {
+.cm-editor {
+    /* height of the editor */
     height: 100%;
-} */
+}
+
+.cm-scroller {
+    overflow: auto;
+}
+
