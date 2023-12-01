@@ -1,5 +1,10 @@
+# Defined by the users
+# node modules must be installed using the command npm install using the package, copying it is expensive
+# the src/bundle file is ignored because the file `editor.bundle.js` can be created from `editor.mjs` file
+# in the development environment
 /node_modules
 /src/bundle
+
 # Logs
 logs
 *.log
