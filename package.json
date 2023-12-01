@@ -12,7 +12,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "rollup -c"
+    "start": "rollup -c -w"
   },
   "keywords": [],
   "author": "",
