@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "bootstrap": "^5.3.2",
-    "codemirror": "^5.65.16"
+    "bootstrap": "^5.3.2"
   }
 }
