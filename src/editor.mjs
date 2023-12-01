@@ -3,13 +3,28 @@
 
 import { java } from "../node_modules/@codemirror/lang-java";
 import { EditorView, keymap } from "../node_modules/@codemirror/view";
-import {} from "../node_modules/@codemirror/commands";
-import { EditorSelection } from "../node_modules/@codemirror/state";
+import { oneDark } from "../node_modules/@codemirror/theme-one-dark";
+import { indentWithTab } from "../node_modules/@codemirror/commands";
+import {
+  EditorSelection,
+  EditorState,
+} from "../node_modules/@codemirror/state";
+import { basicSetup, indentLess, indentMore } from "../node_modules/codemirror";
 
 let template = `class Hello {\n\tpublic static void main(String[] args) {\n\t\tSystem.out.println("Hello World");\n\t}\n}`;
 
-let view = new EditorView({
+let newState = EditorState.create({
   doc: template,
-  extensions: [java(), EditorView.lineWrapping],
+  extensions: [
+    basicSetup,
+    oneDark,
+    java(),
+    EditorView.lineWrapping,
+    keymap.of([indentWithTab]),
+  ],
+});
+
+let view = new EditorView({
+  state: newState,
   parent: document.querySelector("#editor"),
 });
