@@ -17,9 +17,78 @@ function appendOptions(value, text, selectTag) {
 
   selectTag.appendChild(optionTag);
 }
+function capitalize(text) {
+  return text.charAt(0).toUpperCase() + text.slice(1);
+}
 
 let pathPrefixTheme = "../node_modules/codemirror/theme/";
-let cmThemes = "monokai.css".split(" ");
+let cmThemes = [
+  "pastel-on-dark",
+  "3024-day",
+  "3024-night",
+  "abbott",
+  "abcdef",
+  "ambiance-mobile",
+  "ambiance",
+  "ayu-dark",
+  "ayu-mirage",
+  "base16-dark",
+  "base16-light",
+  "bespin",
+  "blackboard",
+  "cobalt",
+  "colorforth",
+  "darcula",
+  "dracula",
+  "duotone-dark",
+  "duotone-light",
+  "eclipse",
+  "elegant",
+  "erlang-dark",
+  "gruvbox-dark",
+  "hopscotch",
+  "icecoder",
+  "idea",
+  "isotope",
+  "juejin",
+  "lesser-dark",
+  "liquibyte",
+  "lucario",
+  "material-darker",
+  "material-ocean",
+  "material-palenight",
+  "material",
+  "mbo",
+  "mdn-like",
+  "midnight",
+  "monokai",
+  "moxer",
+  "neat",
+  "neo",
+  "night",
+  "nord",
+  "oceanic-next",
+  "panda-syntax",
+  "paraiso-dark",
+  "paraiso-light",
+  "railscasts",
+  "rubyblue",
+  "seti",
+  "shadowfox",
+  "solarized",
+  "ssms",
+  "the-matrix",
+  "tomorrow-night-bright",
+  "tomorrow-night-eighties",
+  "ttcn",
+  "twilight",
+  "vibrant-ink",
+  "xq-dark",
+  "xq-light",
+  "yeti",
+  "yonce",
+  "zenburn",
+];
 
 let languages = {
   java: "Java",
@@ -32,10 +101,17 @@ let languages = {
 let cssEnd = document.querySelector("#global-css");
 
 // injecting css files before custom css (index.css)
-cmThemes.map((path) => appendCss(pathPrefixTheme + path, cssEnd));
+cmThemes.map((name) => appendCss(pathPrefixTheme + name + ".css", cssEnd));
 
 // Appending the language options to language select
 let selectTag = document.querySelector("#language");
 for (let key in languages) {
   appendOptions(key, languages[key], selectTag);
 }
+
+// Appending the theme options to theme select
+let themeSelectTag = document.querySelector("#theme");
+themeSelectTag.default = cmThemes[0];
+cmThemes.map((theme) =>
+  appendOptions(theme, capitalize(theme), themeSelectTag)
+);

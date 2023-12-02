@@ -21,10 +21,15 @@ let languageConfig = {
   },
 };
 
-function changeEditor(cmInstance, langSelect) {
+function changeLanguage(cmInstance, langSelect) {
   let option = languageConfig[langSelect.value];
   cmInstance.setOption("mode", option.mode);
   cmInstance.setValue(option.template);
+}
+
+function changeTheme(cmInstance, themeSelect) {
+  let newTheme = themeSelect.value;
+  cmInstance.setOption("theme", newTheme);
 }
 
 let editorDiv = document.querySelector("#editor");
@@ -35,12 +40,18 @@ let myCodeMirror = CodeMirror(editorDiv, {
   indentUnit: 4,
   showHint: true,
   autoCloseBrackets: true,
-  theme: "monokai",
 });
 
-// Binding event changes to select options
+// Binding event changes to language select options
 let langSelect = document.querySelector("#language");
-changeEditor(myCodeMirror, langSelect); // This runs when the page loads to load the default config
+changeLanguage(myCodeMirror, langSelect); // This runs when the page loads to load the default language
 langSelect.addEventListener("change", () => {
-  changeEditor(myCodeMirror, langSelect);
+  changeLanguage(myCodeMirror, langSelect);
+});
+
+// Binding event changes to theme select options
+let themeSelect = document.querySelector("#theme");
+changeTheme(myCodeMirror, themeSelect);
+themeSelectTag.addEventListener("change", () => {
+  changeTheme(myCodeMirror, themeSelect); // This runs  when the page loads to load the default theme
 });
