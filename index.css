@@ -94,6 +94,7 @@ label{
 
 .cm-editor {
     /* height of the editor */
+    overflow-wrap: break-word;
     height: 100%;
 }
 

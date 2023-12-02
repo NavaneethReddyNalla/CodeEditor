@@ -1,30 +1,98 @@
 // This file has the extension .mjs to signify that this is a ES6 module which will later be bundled into a single file by
 // the bundler (Rollup.js in this case) and will be used by index.html to generate our code editor
 
-import { java } from "../node_modules/@codemirror/lang-java";
-import { EditorView, keymap } from "../node_modules/@codemirror/view";
-import { oneDark } from "../node_modules/@codemirror/theme-one-dark";
-import { indentWithTab } from "../node_modules/@codemirror/commands";
+import { EditorState } from "../node_modules/@codemirror/state";
+import { highlightSelectionMatches } from "../node_modules/@codemirror/search";
 import {
-  EditorSelection,
-  EditorState,
-} from "../node_modules/@codemirror/state";
-import { basicSetup, indentLess, indentMore } from "../node_modules/codemirror";
+  indentWithTab,
+  history,
+  defaultKeymap,
+  historyKeymap,
+} from "../node_modules/@codemirror/commands";
+import {
+  foldGutter,
+  indentOnInput,
+  indentUnit,
+  bracketMatching,
+  foldKeymap,
+  syntaxHighlighting,
+  defaultHighlightStyle,
+} from "../node_modules/@codemirror/language";
+import {
+  closeBrackets,
+  autocompletion,
+  closeBracketsKeymap,
+  completionKeymap,
+} from "../node_modules/@codemirror/autocomplete";
+import {
+  lineNumbers,
+  highlightActiveLineGutter,
+  highlightSpecialChars,
+  drawSelection,
+  dropCursor,
+  rectangularSelection,
+  crosshairCursor,
+  highlightActiveLine,
+  keymap,
+  EditorView,
+} from "../node_modules/@codemirror/view";
 
-let template = `class Hello {\n\tpublic static void main(String[] args) {\n\t\tSystem.out.println("Hello World");\n\t}\n}`;
+// Theme
+import { oneDark } from "@codemirror/theme-one-dark";
 
-let newState = EditorState.create({
-  doc: template,
-  extensions: [
-    basicSetup,
-    oneDark,
-    java(),
+// Language
+import { javaLanguage } from "@codemirror/lang-java";
+
+function createEditorState(initialContents = "", options = {}) {
+  let extensions = [
+    lineNumbers(),
+    highlightActiveLineGutter(),
+    highlightSpecialChars(),
+    history(),
+    foldGutter(),
+    drawSelection(),
+    indentUnit.of("    "),
+    EditorState.allowMultipleSelections.of(true),
+    indentOnInput(),
+    bracketMatching(),
+    closeBrackets(),
+    autocompletion(),
+    rectangularSelection(),
+    crosshairCursor(),
+    highlightActiveLine(),
+    highlightSelectionMatches(),
+    keymap.of([
+      indentWithTab,
+      ...closeBracketsKeymap,
+      ...defaultKeymap,
+      ...historyKeymap,
+      ...foldKeymap,
+      ...completionKeymap,
+    ]),
+    javaLanguage,
     EditorView.lineWrapping,
-    keymap.of([indentWithTab]),
-  ],
-});
+    syntaxHighlighting(defaultHighlightStyle, { fallback: true }),
+  ];
 
-let view = new EditorView({
-  state: newState,
-  parent: document.querySelector("#editor"),
-});
+  if (options.oneDark) extensions.push(oneDark);
+
+  return EditorState.create({
+    doc: initialContents,
+    extensions,
+  });
+}
+
+function createEditorView(state, parent) {
+  return new EditorView({ state, parent });
+}
+
+let template = `class Hello {
+    public static void main(String[] args) {
+        System.out.println("Hello World");
+  }
+}`;
+
+let editor = document.querySelector("#editor");
+let state = createEditorState(template, { oneDark: true });
+
+createEditorView(state, editor);
