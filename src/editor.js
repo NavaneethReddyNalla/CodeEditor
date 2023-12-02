@@ -48,6 +48,19 @@ let myCodeMirror = CodeMirror(editorDiv, {
   },
 });
 
+myCodeMirror.on("keyup", function (cm, event) {
+  if (
+    !cm.state
+      .completionActive /*Enables keyboard navigation in autocomplete list*/ &&
+    event.key != "Enter" &&
+    event.key != ";" &&
+    event.key != " "
+  ) {
+    /*Enter - do not open autocomplete list just after item has been selected in it*/
+    CodeMirror.commands.autocomplete(cm, null, { completeSingle: false });
+  }
+});
+
 // Binding event changes to language select options
 let langSelect = document.querySelector("#language");
 changeLanguage(myCodeMirror, langSelect); // This runs when the page loads to load the default language
