@@ -40,6 +40,7 @@ let myCodeMirror = CodeMirror(editorDiv, {
   indentUnit: 4,
   showHint: true,
   autoCloseBrackets: true,
+  matchBrackets: true,
 });
 
 // Binding event changes to language select options
