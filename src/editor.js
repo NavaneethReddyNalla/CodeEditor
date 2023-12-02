@@ -32,6 +32,18 @@ function changeTheme(cmInstance, themeSelect) {
   cmInstance.setOption("theme", newTheme);
 }
 
+function isAlpha(char) {
+  let alphabets = "abcdefghijklmnopqrstuvwxyz";
+
+  for (let i = 0; i < alphabets.length; ++i) {
+    if (alphabets[i] === char) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
 let editorDiv = document.querySelector("#editor");
 
 let myCodeMirror = CodeMirror(editorDiv, {
@@ -52,9 +64,7 @@ myCodeMirror.on("keyup", function (cm, event) {
   if (
     !cm.state
       .completionActive /*Enables keyboard navigation in autocomplete list*/ &&
-    event.key != "Enter" &&
-    event.key != ";" &&
-    event.key != " "
+    isAlpha(event.key)
   ) {
     /*Enter - do not open autocomplete list just after item has been selected in it*/
     CodeMirror.commands.autocomplete(cm, null, { completeSingle: false });
@@ -73,4 +83,9 @@ let themeSelect = document.querySelector("#theme");
 changeTheme(myCodeMirror, themeSelect);
 themeSelectTag.addEventListener("change", () => {
   changeTheme(myCodeMirror, themeSelect); // This runs  when the page loads to load the default theme
+});
+
+let runBtn = document.querySelector("#run");
+runBtn.addEventListener("click", () => {
+  console.log(myCodeMirror.getValue());
 });
