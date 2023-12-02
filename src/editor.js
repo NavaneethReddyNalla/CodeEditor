@@ -11,6 +11,14 @@ let languageConfig = {
     template: `print("Hello World");`,
     mode: "python",
   },
+  cpp: {
+    template: `#include <iostream>\nusing namespace std;\n\nvoid main() {\n\tcout << "Hello World" << endl;\n}`,
+    mode: "text/x-c++src",
+  },
+  c: {
+    template: `#include <stdio.h>\n\nint main() {\n\tprintf("Hello World\\n");\n\treturn 0;\n}`,
+    mode: "text/x-csrc",
+  },
 };
 
 function changeEditor(cmInstance, langSelect) {
@@ -32,7 +40,7 @@ let myCodeMirror = CodeMirror(editorDiv, {
 
 // Binding event changes to select options
 let langSelect = document.querySelector("#language");
-changeEditor(myCodeMirror, langSelect);
+changeEditor(myCodeMirror, langSelect); // This runs when the page loads to load the default config
 langSelect.addEventListener("change", () => {
   changeEditor(myCodeMirror, langSelect);
 });
