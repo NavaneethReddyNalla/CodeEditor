@@ -10,10 +10,10 @@ function appendCss(path, endLink) {
   document.head.insertBefore(link, endLink);
 }
 
-let pathPrefix = "../node_modules/codemirror/";
-let cssFiles = "lib/codemirror.css theme/monokai.css".split(" ");
+let pathPrefixTheme = "../node_modules/codemirror/theme/";
+let cmThemes = "monokai.css".split(" ");
 
 let cssEnd = document.querySelector("#global-css");
 
 // injecting css files before custom css (index.css)
-cssFiles.map((path) => appendCss(pathPrefix + path, cssEnd));
+cmThemes.map((path) => appendCss(pathPrefixTheme + path, cssEnd));
