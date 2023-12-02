@@ -10,10 +10,32 @@ function appendCss(path, endLink) {
   document.head.insertBefore(link, endLink);
 }
 
+function appendOptions(value, text, selectTag) {
+  let optionTag = document.createElement("option");
+  optionTag.value = value;
+  optionTag.textContent = text;
+
+  selectTag.appendChild(optionTag);
+}
+
 let pathPrefixTheme = "../node_modules/codemirror/theme/";
 let cmThemes = "monokai.css".split(" ");
+
+let languages = {
+  java: "Java",
+  python: "Python",
+  cpp: "C++",
+  c: "C",
+  js: "JavaScript",
+};
 
 let cssEnd = document.querySelector("#global-css");
 
 // injecting css files before custom css (index.css)
 cmThemes.map((path) => appendCss(pathPrefixTheme + path, cssEnd));
+
+// Appending the language options to language select
+let selectTag = document.querySelector("#language");
+for (let key in languages) {
+  appendOptions(key, languages[key], selectTag);
+}
