@@ -41,6 +41,8 @@ let myCodeMirror = CodeMirror(editorDiv, {
   showHint: true,
   autoCloseBrackets: true,
   matchBrackets: true,
+  styleActiveLine: true,
+  lineWrapping: true,
   extraKeys: {
     "Ctrl-Space": "autocomplete",
   },

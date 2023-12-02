@@ -95,3 +95,7 @@ label{
 .CodeMirror {
     height: 100%;
 }
+
+.CodeMirror-wrap pre {
+    word-break: break-word;
+}
