@@ -8,7 +8,7 @@ let languageConfig = {
     mode: "javascript",
   },
   python: {
-    template: `print("Hello World");`,
+    template: `print("Hello World")`,
     mode: "python",
   },
   cpp: {
