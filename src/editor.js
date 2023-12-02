@@ -41,6 +41,9 @@ let myCodeMirror = CodeMirror(editorDiv, {
   showHint: true,
   autoCloseBrackets: true,
   matchBrackets: true,
+  extraKeys: {
+    "Ctrl-Space": "autocomplete",
+  },
 });
 
 // Binding event changes to language select options

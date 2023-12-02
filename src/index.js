@@ -21,6 +21,7 @@ function capitalize(text) {
   return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
+// CSS for themes
 let pathPrefixTheme = "../node_modules/codemirror/theme/";
 let cmThemes = [
   "pastel-on-dark",
@@ -90,6 +91,10 @@ let cmThemes = [
   "zenburn",
 ];
 
+// CSS for addons
+let pathPrefixAddon = "../node_modules/codemirror/addon/";
+let addonCSS = ["hint/show-hint.css"];
+
 let languages = {
   java: "Java",
   python: "Python",
@@ -102,6 +107,7 @@ let cssEnd = document.querySelector("#global-css");
 
 // injecting css files before custom css (index.css)
 cmThemes.map((name) => appendCss(pathPrefixTheme + name + ".css", cssEnd));
+addonCSS.map((path) => appendCss(pathPrefixAddon + path, cssEnd));
 
 // Appending the language options to language select
 let selectTag = document.querySelector("#language");
