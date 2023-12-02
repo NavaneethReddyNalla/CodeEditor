@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Java CBP</title>
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../node_modules/codemirror/lib/codemirror.css">
-    <link rel="stylesheet" href="../node_modules/codemirror/theme/monokai.css">
     <link rel="stylesheet" href="../src/index.css">
 </head>
 <body class="bg-dark bg-gradient">
+    <noscript>You need JavaScript to run this code editor</noscript>
+
     <!-- nav bar -->
     <header class="text-center text-white p-1">
         <h1>Code Editor</h1>
@@ -20,13 +20,12 @@
         <div class="code-editor-area">
             <div class=" w-100 p-1 editor-header">
                 <div>
-                        <label for="Language">Language:</label>
-                        <select name="Language" id="Language" class="drop-down" default="Java">
-                            <option value="Java">Java</option>
+                        <label for="language">Language:</label>
+                        <select name="language" id="language" class="drop-down" default="java">
                         </select>
                     
-                        <label for="Theme">Theme:</label>
-                        <select name="Theme" id="Theme" class="drop-down" default="dark">
+                        <label for="theme">Theme:</label>
+                        <select name="theme" id="theme" class="drop-down" default="dark">
                             <option value="dark">Dark</option>
                             <option value="light">Light</option>
                             <option value="blue">Blue</option>
@@ -55,10 +54,6 @@
             </div>
         </div>
     </main>
-    <script src="../node_modules/codemirror/lib/codemirror.js"></script>
-    <script src="../node_modules/codemirror/mode/clike/clike.js"></script>
-
-    <script type="module" src="../src/editor.js"></script>
-
+    <script src="../src/index.js"></script>
 </body>
 </html>   
