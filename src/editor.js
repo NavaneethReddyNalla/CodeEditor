@@ -9,5 +9,6 @@ let myCodeMirror = CodeMirror(editorDiv, {
   indentWithTabs: true,
   indentUnit: 4,
   showHint: true,
+  autoCloseBrackets: true,
   theme: "monokai",
 });
