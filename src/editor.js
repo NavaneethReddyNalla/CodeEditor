@@ -84,8 +84,3 @@ changeTheme(myCodeMirror, themeSelect);
 themeSelectTag.addEventListener("change", () => {
   changeTheme(myCodeMirror, themeSelect); // This runs  when the page loads to load the default theme
 });
-
-let runBtn = document.querySelector("#run");
-runBtn.addEventListener("click", () => {
-  console.log(myCodeMirror.getValue());
-});
