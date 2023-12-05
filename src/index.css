@@ -59,9 +59,13 @@ button:hover{
     min-height: 90vh;
 }
 
-textarea {
+textarea, #output {
     background-color: black;
     color: white;
+}
+
+#output {
+    height: 100%;
 }
 
 ::placeholder {
@@ -78,7 +82,7 @@ textarea {
 
 .input-area {
 
-    background-color: 	#00124a;
+    background-color: #00124a;
 }
 
 #input-box {
@@ -92,8 +96,9 @@ textarea {
 }
 
 .output-area {
-    background-color: 	#00124a;
+    background-color: #00124a;
     color:white;
+    height: 50%;
 }
 
 label{

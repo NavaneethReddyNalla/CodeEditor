@@ -2,7 +2,7 @@ function compileAndExecute() {
   const stdinput = document.querySelector("#input-box").value;
   const code = myCodeMirror.getValue();
   const url =
-    "https://judge0-ce.p.rapidapi.com/submissions?base64_encoded=true&wait=true&fields=*";
+    "https://judge0-ce.p.rapidapi.com/submissions?base64_encoded=false&wait=true&fields=*";
   const options = {
     method: "POST",
     headers: {
@@ -19,10 +19,14 @@ function compileAndExecute() {
   };
 
   try {
+    const output = document.querySelector("#output");
     const response = fetch(url, options);
     const result = response
       .then((response) => response.json())
-      .then((obj) => console.log(obj));
+      .then((obj) => {
+        console.log(obj);
+        output.textContent = obj.stdout;
+      });
   } catch (error) {
     console.log("Error");
     console.error(error);
