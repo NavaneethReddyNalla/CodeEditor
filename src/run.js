@@ -1,4 +1,4 @@
-async function compileAndExecute() {
+function compileAndExecute() {
   const stdinput = document.querySelector("#input-box").value;
   const code = myCodeMirror.getValue();
   const url =
@@ -19,9 +19,8 @@ async function compileAndExecute() {
   };
 
   try {
-    const response = await fetch(url, options);
-    const result = await response.text();
-    console.log(result);
+    const response = fetch(url, options);
+    const result = response.then(response => response.json()).then(obj => console.log(obj));
   } catch (error) {
     console.log("Error");
     console.error(error);
