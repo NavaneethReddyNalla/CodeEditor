@@ -1,6 +1,6 @@
 let languageConfig = {
   java: {
-    template: `class Hello {\n\tpublic static void main(String[] args) {\n\t\tSystem.out.println("Hello World");\n\t}\n}`,
+    template: `public class Main {\n\tpublic static void main(String[] args) {\n\t\tSystem.out.println("Hello World");\n\t}\n}`,
     mode: "text/x-java",
   },
   js: {
