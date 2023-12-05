@@ -20,7 +20,9 @@ function compileAndExecute() {
 
   try {
     const response = fetch(url, options);
-    const result = response.then(response => response.json()).then(obj => console.log(obj));
+    const result = response
+      .then((response) => response.json())
+      .then((obj) => console.log(obj));
   } catch (error) {
     console.log("Error");
     console.error(error);
