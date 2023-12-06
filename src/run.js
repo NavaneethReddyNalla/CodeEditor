@@ -29,6 +29,7 @@ function compileAndExecute() {
 
   try {
     const output = document.querySelector("#output");
+    output.textContent = "Executing...";
     const response = fetch(url, options);
     const result = response
       .then((response) => response.json())
