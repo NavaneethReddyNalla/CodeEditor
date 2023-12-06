@@ -21,6 +21,8 @@ let languageConfig = {
   },
 };
 
+let ID;
+
 function changeLanguage(cmInstance, langSelect) {
   let option = languageConfig[langSelect.value];
   cmInstance.setOption("mode", option.mode);

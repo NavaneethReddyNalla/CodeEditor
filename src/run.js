@@ -1,4 +1,13 @@
+let languageIDs = {
+  java: 62,
+  js: 93,
+  python: 92,
+  cpp: 54,
+  c: 50,
+};
+
 function compileAndExecute() {
+  const id = languageIDs[document.querySelector("#language").value];
   const stdinput = document.querySelector("#input-box").value;
   const code = myCodeMirror.getValue();
   const url =
@@ -12,7 +21,7 @@ function compileAndExecute() {
       "X-RapidAPI-Host": "judge0-ce.p.rapidapi.com",
     },
     body: JSON.stringify({
-      language_id: 62,
+      language_id: id,
       source_code: code,
       stdin: stdinput,
     }),
@@ -25,7 +34,11 @@ function compileAndExecute() {
       .then((response) => response.json())
       .then((obj) => {
         console.log(obj);
-        output.textContent = obj.stdout;
+
+        if (obj?.compile_output !== undefined)
+          output.textContent = obj.compile_output;
+        else if (obj?.stderr !== undefined) output.textContent = obj.stderr;
+        else output.textContent = obj.stdout;
       });
   } catch (error) {
     console.log("Error");
