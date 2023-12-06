@@ -35,10 +35,13 @@ function compileAndExecute() {
       .then((obj) => {
         console.log(obj);
 
-        if (obj?.compile_output !== undefined)
+        if (obj.status_id === 3) {
+          output.textContent = obj.stdout;
+        } else if (obj.status_id === 6) {
           output.textContent = obj.compile_output;
-        else if (obj?.stderr !== undefined) output.textContent = obj.stderr;
-        else output.textContent = obj.stdout;
+        } else {
+          output.textContent = obj.stderr;
+        }
       });
   } catch (error) {
     console.log("Error");
